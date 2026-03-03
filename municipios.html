@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Municípios - Lista</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- AdminLTE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css" />
+    <style>
+      /* small tweak to keep table readable */
+      .table thead th { white-space: nowrap; }
+    </style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="index.html" class="nav-link">Início</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="index.html" class="brand-link">
+          <i class="fa-solid fa-city fa-lg ms-3"></i>
+          <span class="brand-text font-weight-light ms-2">Município - Exemplo</span>
+        </a>
+        <div class="sidebar">
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <li class="nav-item">
+                <a href="municipios.html" class="nav-link active">
+                  <i class="nav-icon fa-solid fa-list"></i>
+                  <p>Municípios</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Lista de Municípios</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                  <li class="breadcrumb-item active">Municípios</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-lg-4 col-6">
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>20</h3>
+                    <p>Municípios</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-city"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-6">
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3>20.504.377</h3>
+                    <p>População total</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-users"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-6">
+                <div class="small-box bg-warning">
+                  <div class="inner">
+                    <h3>35.782,7 km²</h3>
+                    <p>Área total</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Exibição de até 20 registros</h3>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar (visual)">
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover table-striped table-bordered text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nome</th>
+                      <th>Estado</th>
+                      <th>IBGE</th>
+                      <th>População (estim.)</th>
+                      <th>Área (km²)</th>
+                      <th>Densidade (hab/km²)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>São João</td><td>SP</td><td>3500001</td><td>123.456</td><td>150,2</td><td>821,94</td></tr>
+                    <tr><td>2</td><td>Vila Nova</td><td>RJ</td><td>3300002</td><td>98.765</td><td>98,6</td><td>1.001,67</td></tr>
+                    <tr><td>3</td><td>Santa Cruz</td><td>MG</td><td>3100003</td><td>54.321</td><td>210,4</td><td>258,18</td></tr>
+                    <tr><td>4</td><td>Boa Vista</td><td>RR</td><td>1400004</td><td>42.000</td><td>5.771,2</td><td>7,28</td></tr>
+                    <tr><td>5</td><td>Porto Alegre</td><td>RS</td><td>4300005</td><td>1.484.941</td><td>496,8</td><td>2.988,97</td></tr>
+                    <tr><td>6</td><td>Campinas</td><td>SP</td><td>3500006</td><td>1.213.792</td><td>795,1</td><td>1.526,07</td></tr>
+                    <tr><td>7</td><td>Recife</td><td>PE</td><td>2600007</td><td>1.653.461</td><td>218,3</td><td>7.576,94</td></tr>
+                    <tr><td>8</td><td>Fortaleza</td><td>CE</td><td>2300008</td><td>2.686.612</td><td>313,1</td><td>8.581,91</td></tr>
+                    <tr><td>9</td><td>Manaus</td><td>AM</td><td>1300009</td><td>2.182.763</td><td>11.400,4</td><td>191,53</td></tr>
+                    <tr><td>10</td><td>Belém</td><td>PA</td><td>1500010</td><td>1.499.641</td><td>1.074,1</td><td>1.396,00</td></tr>
+                    <tr><td>11</td><td>Curitiba</td><td>PR</td><td>4100011</td><td>1.948.626</td><td>430,9</td><td>4.521,88</td></tr>
+                    <tr><td>12</td><td>Florianópolis</td><td>SC</td><td>4200012</td><td>508.826</td><td>675,4</td><td>753,65</td></tr>
+                    <tr><td>13</td><td>Natal</td><td>RN</td><td>2400013</td><td>884.122</td><td>170,3</td><td>5.193,29</td></tr>
+                    <tr><td>14</td><td>João Pessoa</td><td>PB</td><td>2500014</td><td>817.511</td><td>211,4</td><td>3.868,22</td></tr>
+                    <tr><td>15</td><td>Goiânia</td><td>GO</td><td>5200015</td><td>1.536.097</td><td>739,2</td><td>2.078,41</td></tr>
+                    <tr><td>16</td><td>Campo Grande</td><td>MS</td><td>5000016</td><td>906.092</td><td>8.091,2</td><td>112,02</td></tr>
+                    <tr><td>17</td><td>Maceió</td><td>AL</td><td>2700017</td><td>1.011.297</td><td>511,2</td><td>1.978,25</td></tr>
+                    <tr><td>18</td><td>Teresina</td><td>PI</td><td>2200018</td><td>868.075</td><td>1.178,8</td><td>736,52</td></tr>
+                    <tr><td>19</td><td>Cuiabá</td><td>MT</td><td>5100019</td><td>618.124</td><td>3.152,5</td><td>196,19</td></tr>
+                    <tr><td>20</td><td>Vitória</td><td>ES</td><td>3200020</td><td>365.855</td><td>93,6</td><td>3.908,06</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer">
+                Mostrando 20 registros estáticos.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="main-footer">
+        <div class="float-end d-none d-sm-inline">AdminLTE 4</div>
+        <strong>Exemplo estático.</strong>
+      </footer>
+    </div>
+  </body>
+</html>

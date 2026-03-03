@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Municípios Dinâmicos</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AdminLTE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/css/adminlte.min.css" />
+  <!-- DataTables CSS (Bootstrap 5) -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+</head>
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="index.html" class="nav-link">Início</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="index.html" class="brand-link">
+        <i class="fa-solid fa-city fa-lg ms-3"></i>
+        <span class="brand-text font-weight-light ms-2">Município - Exemplo</span>
+      </a>
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="municipios.html" class="nav-link">
+                <i class="nav-icon fa-solid fa-list"></i>
+                <p>Municípios</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="municipios-dinamicos.html" class="nav-link active">
+                <i class="nav-icon fa-solid fa-earth-americas"></i>
+                <p>Municípios Dinâmicos</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Municípios Dinâmicos (API Pública)</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="index.html">Início</a></li>
+                <li class="breadcrumb-item active">Municípios Dinâmicos</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes -->
+          <div class="row">
+            <div class="col-lg-4 col-6">
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3 id="dyn-total">0</h3>
+                  <p>Municípios (total)</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-city"></i></div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-6">
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3 id="dyn-ufs">0</h3>
+                  <p>Unidades Federativas</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-flag"></i></div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-6">
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3 id="dyn-mesorregioes">0</h3>
+                  <p>Mesorregiões (ex.)</p>
+                </div>
+                <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h3 class="card-title">Consulta API pública de municípios</h3>
+              <div>
+                <button id="btn-refresh" class="btn btn-sm btn-outline-secondary">Atualizar</button>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+              <table id="dinamicos-table" class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>UF</th>
+                    <th>IBGE</th>
+                    <th>Região</th>
+                  </tr>
+                </thead>
+                <tbody id="dinamicos-body">
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer" id="status">Carregando...</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="main-footer">
+      <div class="float-end d-none d-sm-inline">AdminLTE 4</div>
+      <strong>Exemplo estático.</strong>
+    </footer>
+  </div>
+
+  <!-- jQuery (requerido pelo DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/admin-lte@4.0.0/dist/js/adminlte.min.js"></script>
+
+  <script>
+    // Endpoint público do IBGE que retorna todos os municípios
+    const API_URL = 'https://servicodados.ibge.gov.br/api/v1/localidades/municipios';
+    const PAGE_LENGTH = 20; // itens por página
+    let dataTable = null;
+
+    function renderRows(items) {
+      const tbody = document.getElementById('dinamicos-body');
+      tbody.innerHTML = '';
+      const ufs = new Set();
+      const mesorregioes = new Set();
+      items.forEach((m, idx) => {
+        // Estrutura do IBGE: m.microrregiao.mesorregiao.mesorregiao? -> obter uf e mesorregiao
+        const meso = m.microrregiao && m.microrregiao.mesorregiao ? m.microrregiao.mesorregiao.nome : '';
+        const uf = m.microrregiao && m.microrregiao.mesorregiao && m.microrregiao.mesorregiao.UF ? m.microrregiao.mesorregiao.UF.sigla : (m.municipio && m.municipio.uf ? m.municipio.uf : '');
+        if (uf) ufs.add(uf);
+        if (meso) mesorregioes.add(meso);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td>${m.nome}</td>
+          <td>${uf}</td>
+          <td>${m.id}</td>
+          <td>${meso}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Preenche os small boxes com totais
+      document.getElementById('dyn-total').textContent = items.length;
+      document.getElementById('dyn-ufs').textContent = ufs.size;
+      document.getElementById('dyn-mesorregioes').textContent = mesorregioes.size;
+
+      // Inicializa ou reinicializa o DataTable com paginação
+      const tableSelector = '#dinamicos-table';
+      if ($.fn.DataTable.isDataTable(tableSelector)) {
+        $(tableSelector).DataTable().clear().destroy();
+      }
+      dataTable = $(tableSelector).DataTable({
+        pageLength: PAGE_LENGTH,
+        lengthChange: false,
+        ordering: true,
+        order: [[1, 'asc']],
+        language: {
+          url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json'
+        }
+      });
+    }
+
+    async function fetchMunicipios() {
+      const status = document.getElementById('status');
+      status.textContent = 'Consultando API pública...';
+      try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('Resposta da API: ' + res.status);
+        const data = await res.json();
+        renderRows(data);
+        status.textContent = `Mostrando ${data.length} registros (paginado, ${PAGE_LENGTH} por página)`;
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Erro ao consultar API pública. Verifique CORS/Conectividade no navegador.';
+        const tbody = document.getElementById('dinamicos-body');
+        tbody.innerHTML = `<tr><td colspan="5">Erro: ${err.message}</td></tr>`;
+      }
+    }
+
+    document.getElementById('btn-refresh').addEventListener('click', fetchMunicipios);
+    document.addEventListener('DOMContentLoaded', fetchMunicipios);
+  </script>
+</body>
+</html>
