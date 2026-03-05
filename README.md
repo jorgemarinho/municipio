@@ -1,5 +1,37 @@
 Projeto de exemplo: layout estático usando AdminLTE 4
 
+Servindo com Docker + Nginx
+
+Arquivos adicionados para Docker
+- `Dockerfile` - imagem baseada em nginx que copia os arquivos estáticos
+- `nginx/default.conf` - configuração simples do Nginx
+- `docker-compose.yml` - define serviço `web` que expõe a aplicação na porta 8000 do host
+
+Como rodar com Docker Compose
+1. Certifique-se de ter Docker e Docker Compose instalados.
+2. A partir do diretório do projeto execute:
+
+```bash
+docker compose up --build -d
+```
+
+3. Abra no navegador: http://localhost:8000
+
+Como parar e remover:
+
+```bash
+docker compose down
+```
+
+O que o serviço faz
+- O Nginx serve os arquivos estáticos a partir do diretório do projeto.
+- A porta 80 do container é mapeada para a porta 8000 do host.
+
+Notas
+- Se estiver usando WSL ou Docker Toolbox, verifique o IP da VM/host.
+- As páginas ainda dependem de CDNs para CSS/JS (AdminLTE, Bootstrap, DataTables). Se quiser uma imagem autossuficiente, posso baixar e embutir os assets localmente.
+Projeto de exemplo: layout estático usando AdminLTE 4
+
 Arquivos importantes
 - `index.html` - Página inicial com menu lateral (link para listas)
 - `municipios.html` - Lista estática com 20 municípios (dados fictícios)
